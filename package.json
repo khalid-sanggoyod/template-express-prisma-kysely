@@ -1,0 +1,100 @@
+{
+  "name": "template-express-prisma-kysely",
+  "version": "1.0.0",
+  "repository": "https://github.com/Khalid-Sanggoyod/template-express-prisma-kysely",
+  "bugs": {
+    "url": "https://github.com/Khalid-Sanggoyod/template-express-prisma-kysely/issues"
+  },
+  "contributors": [
+    {
+      "name": "Khalid Sanggoyod",
+      "url": "https://github.com/Khalid-sanggoyod"
+    }
+  ],
+  "description": "Template Express Prisma kysely API",
+  "author": "Khalid Sanggoyod <sanggoyodk8@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "db:dev": "tsx ./cli/db-dev-migrate.ts",
+    "db:create": "prisma migrate dev --create-only",
+    "db:generate": "prisma generate",
+    "db:deploy": "prisma migrate deploy",
+    "db:status": "prisma migrate status",
+    "dev": "nodemon --watch ./src/ -e ts --exec \"tsx ./src/index.ts\"",
+    "test": "vitest",
+    "test:coverage": "vitest --coverage",
+    "lint": "eslint . -c .ts",
+    "lint:fix": "yarn lint --fix",
+    "format": "prettier --write '**/*.ts{,x}'",
+    "check:types": "tsc",
+    "check:spell": "git diff --name-only | cspell --no-summary --no-progress --no-must-find-files --file-list stdin",
+    "check:all": "concurrently \"yarn lint\" \"yarn check:types\" \"yarn check:spell\"",
+    "pre-commit": "concurrently \"lint-staged --allow-empty\" \"yarn check:types\" \"yarn check:spell\"",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx}": [
+      "prettier --write",
+      "eslint --fix"
+    ]
+  },
+  "packageManager": "yarn@1.22.17",
+  "dependencies": {
+    "@prisma/client": "^5.16.0",
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.2",
+    "cors": "^2.8.5",
+    "dayjs": "^1.11.11",
+    "express": "^4.19.2",
+    "express-validator": "^7.1.0",
+    "helmet": "^7.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "kysely": "^0.27.4",
+    "lodash": "^4.17.21",
+    "morgan": "^1.10.0",
+    "passport": "^0.7.0",
+    "passport-jwt": "^4.0.1",
+    "passport-local": "^1.0.0",
+    "pg": "^8.12.0",
+    "pino": "^9.2.0",
+    "pino-pretty": "^11.2.1",
+    "prisma-kysely": "^1.8.0",
+    "shortid": "^2.2.16",
+    "slugify": "^1.6.6",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^19.3.0",
+    "@commitlint/config-conventional": "^19.2.2",
+    "@types/bcrypt": "^5.0.2",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/jsonwebtoken": "^9.0.6",
+    "@types/lodash": "^4.17.6",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20.14.9",
+    "@types/passport": "^1.0.16",
+    "@types/passport-jwt": "^4.0.1",
+    "@types/passport-local": "^1.0.38",
+    "@types/pg": "^8.11.6",
+    "@types/shortid": "^0.0.32",
+    "@types/swagger-jsdoc": "^6.0.4",
+    "@typescript-eslint/parser": "^7.14.1",
+    "chalk": "^5.3.0",
+    "concurrently": "^8.2.2",
+    "cspell": "^8.9.1",
+    "dotenv": "^16.4.5",
+    "eslint": "^9.5.0",
+    "eslint-config-prettier": "^9.1.0",
+    "husky": "^9.0.11",
+    "lint-staged": "^15.2.7",
+    "nodemon": "^3.1.4",
+    "prettier": "^3.3.2",
+    "prisma": "^5.16.0",
+    "swagger-jsdoc": "^6.2.8",
+    "tsx": "^4.15.7",
+    "typescript": "^5.5.2",
+    "vite-tsconfig-paths": "^4.3.2",
+    "vitest": "^1.6.0"
+  }
+}
